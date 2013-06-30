@@ -1,0 +1,25 @@
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-06-30 17:18:57
+version 
+project --topLevelPackage com.idioticsoft.cric --packaging POM
+module create --moduleName domain --topLevelPackage ~.domain
+module focus --moduleName ~
+module create --moduleName services --topLevelPackage ~.service
+module focus --moduleName ~
+module create --moduleName user-interface --packaging POM --topLevelPackage ~.ui
+module create --moduleName web --topLevelPackage ~.ui.web
+web mvc setup
+module focus --moduleName  ~
+logging setup --level INFO
+module focus --moduleName user-interface/web 
+logging setup --level INFO
+module focus --moduleName  ~
+module focus --moduleName user-interface/web 
+security setup
+module focus --moduleName domain 
+jpa setup --provider HIBERNATE --database H2_IN_MEMORY
+module focus --moduleName services 
+dependency add --groupId com.idioticsoft.cric.domain --artifactId domain --version 0.1.0.BUILD-SNAPSHOT
+module focus --moduleName user-interface/web 
+dependency add --groupId com.idioticsoft.cric.services --artifactId services --version 0.1.0.BUILD-SNAPSHOT
+module focus --moduleName ~
+perform command --mavenCommand idea:idea

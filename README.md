@@ -1,0 +1,4 @@
+CricManage
+==========
+
+Cricket Tournament Manager
